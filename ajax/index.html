@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		用户id:<input id="user_id" type="text"/>
+		外网IP：<input id="ip_out" type="text"/>
+		<button id="btn">发送</button>
+
+		<script src="http://pv.sohu.com/cityjson?ie=utf-8">//获取外网ip</script>
+	    <script src="./js/jquery-3.3.1.js"></script>
+		<script>		
+			//接口：https://h5.xifajiaoyu.com/
+			var user_id = $('#user_id').val();
+			var ip_out = $('ip_out').val();
+			$('#btn').click(function(){
+				$.ajax({
+					url:'api/daily_embroidery/',  //绑定接口
+					type:'POST',
+					success:function(data){
+						if(data.trim() == "OK"){
+							alert("成功")
+						} else{
+							alert("输入错误");
+						}
+					}
+				})
+				console.log(returnCitySN["cip"]);//获取外网ip   
+			})
+		</script>
+	</body>
+</html>
