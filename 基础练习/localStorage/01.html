@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>01</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet">
+    </head>
+    <body>
+        
+        <!--在chrome调试中的application选项卡中查看-->
+        <script>
+            if(!window.localStorage){
+            alert("浏览器不支持localstorage");
+            }else{
+            var storage=window.localStorage;
+            var data={
+                name:'xiecanyong',
+                sex:'man',
+                hobby:'program'
+            };
+            var d=JSON.stringify(data);
+            storage.setItem("data",d);
+            console.log(storage.data);
+            }
+        </script>
+    </body>
+</html>

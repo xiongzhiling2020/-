@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        
+        
+        <script>
+            //基本类型：可以操作保存在变量中的世界的值----值传递
+            var a = 1;
+            var b = a;
+            a = 2;
+            console.log(a);  //2
+            console.log(b);  //1
+
+            //引用类型：js不能直接操作对象的内存空间----引用对象传递
+            let c = [1,2,3,4];
+            let d = c;
+            c[0] = 0;
+            console.log(c);  //[0,2,3,4]
+            console.log(d);  //[0,2,3,4]
+
+            //函数--所有函数的参数都是按值传递的
+            function add(num){
+                num += 10;
+                return num;
+            }
+            var count = 20;
+            var result = add(count);
+            console.log(count); //20
+            console.log(result);  //30
+
+            //对象函数--按值传递，即使在函数内部修改了参数的值，但原始的引用仍然保持不变
+            function setName(obj){
+                obj.name = 'Jerry';
+                obj = new Object();
+                obj.name = "Grey";  //这个局部变量会在函数执行完毕后立即被销毁
+            }
+            var people = new Object();
+            setName(people);
+            console.log(people.name);  //Jerry
+
+            //可以给引用类型动态添加属性和方法
+            var person = new Object();
+            person.name = "Tom";
+            console.log(person.name);  //Tom
+            person.age = 27;
+            console.log(person.age); //27
+            //不能给基本类型动态添加属性和方法
+            var name = "Tomi";
+            name.age = 27;
+            console.log(name.age); //undefined
+
+
+        </script>
+    </body>
+</html>

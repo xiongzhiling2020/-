@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        
+        
+        <script>
+            //构造函数
+            let person = new Object();
+            person.name = 'Tom';
+            person.age = 23;
+            console.log(person);  
+            console.log(person.name);
+            console.log(person.age);
+            console.log(person["name"]); //Tom
+
+            //对象字面量
+            var person1 ={
+                name:"Jerry",
+                age:12
+            }
+            console.log(person1);  
+            console.log(person1.name);
+            console.log(person1.age);
+
+            //Array()
+            var colors = new Array(3);
+            var names = new Array("Grey");
+
+            var animals = ["cat", "dog", "mouse"];
+            var phones = [] //空的数组
+
+            console.log(colors);
+            console.log(names);
+            console.log(animals);
+            console.log(phones);
+
+            animals.length = 2;  //删除mouse
+            console.log(animals[2]);  //animals[2] = undefined
+
+            animals.length = 4; 
+            console.log(animals[3]);  //animals[3] = undefined
+
+            animals[animals.length] = "monkey"; //animals[4] = monkey
+            console.log(animals);  //["cat","dog","undefined","undefined","monkey"]
+
+        </script>
+    </body>
+</html>
