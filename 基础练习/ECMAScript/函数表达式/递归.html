@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        
+        
+        <script>
+        //1、在一个函数通过名字调用自身
+        function fact0(num){
+            if(num <= 1){
+                return 1;
+            } else {
+                return num * fact0(num-1)
+            }    
+        }
+        var arg0 = fact0(3);
+        console.log(arg0) //6
+
+        //2、arguments.callee()：指向正在执行的函数的指针，可以用它来实现对函数的递归调用
+        function fact(num){
+            if(num <= 1){
+                return 1;
+            } else {
+                return num * arguments.callee(num-1);
+            }
+        }
+        var arg = fact(3);
+        console.log(arg) //6
+
+        //3、在严格模式下，不能通过脚本访问arguments.callee()
+        //可以使用命名函数表达式实现效果
+        var fact1 = (function f(num){
+            if(num <= 1){
+                return 1;
+            } else {
+                return num * f(num-1);
+            }
+        });
+        console.log(fact1(3))  //6
+        </script>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script>
+            //数据属性
+            var person = {};
+            //Object.defineProperty()--修改属性默认的特性
+            Object.defineProperty(person, "name", {
+                writable:false, //默认是true
+                enumerable:true, //默认是true
+                configurable:true, //默认是true
+                value:"nico" //默认值是undefined
+            })
+
+            console.log(person.name); //nico
+            person.name = "glue";
+            console.log(person.name) //nico
+
+            //访问器属性 --> 常见使用方式：设置一个属性的值使其他属性发生变化
+            //Object.defineProperty()--修改属性默认的特性
+            var book = {
+                _year:2004, //(_)是一种常用记号，代表只能通过对象方法访问的属性
+                edition:1
+            }
+            Object.defineProperty(book, "year", {
+                get(){
+                    return this._year
+                },
+                set(value){
+                    if(value > 2016){
+                        this._year = value;
+                        console.log(value) //2017
+                        this.edition += value - 2004
+                    }
+                }
+            });
+            book.year = 2017;
+            console.log(book.edition) //14
+
+            //定义多个属性--//Object.defineProperties()
+            var animals = {
+                _year: {
+                    value: 2004
+                },
+                size:{
+                    value: 1
+                },
+                year: {
+                    get(){
+                        return this._year
+                    },
+                    set(value){
+                        if(value > 2004){
+                            this._year = value,
+                            console.log(this._year)
+                            this.size += value - 2
+                        }
+                    }
+                },
+            }
+            animals._year = 3;
+            console.log(animals.size)
+        </script>
+    </body>
+</html>

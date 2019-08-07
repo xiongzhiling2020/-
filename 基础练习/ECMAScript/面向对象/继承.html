@@ -17,15 +17,20 @@
         <![endif]-->
         
         <script>
-            var person = {};
-            Object.defineProperty(person, "name", {
-                writable:false, //默认是true
-                value:"nico"
-            })
+          //OO语言支持两种继承：接口继承（只继承方法签名）和实现继承（继承实际的方法）
+          //ECMAScript只支持实现继承，主要依靠原型链来实现  
 
-            console.log(person.name); //nico
-            person.name = "glue";
-            console.log(person.name) //nico
+          //借用构造函数：call()和apply()--可以在新创建的对象上执行构造函数
+          function SuperType(){
+              this.colors = ["red", "blue", "green"]
+          }
+          function SbuType(){
+              //继承了SuperType
+              SuperType.call(this)
+          }
+
+          var ins = new SbuType();
+          console.log(ins.colors) //["red", "blue", "green"]
         </script>
     </body>
 </html>
